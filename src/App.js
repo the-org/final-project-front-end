@@ -1,20 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import superagent from 'superagent';
 
-class App extends React.Component {
+class App extends Component {
+  
+  componentDidMount(){
+    superagent.get('https://final-back-end.herokuapp.com')
+      .then(res =>{
+        console.log(res);
+      });
+  }
   render() {
     return (
       <>
-        <Test />
+        <p>test</p>
       </>
-    );
-  }
-}
-
-class Test extends React.Component {
-  render() {
-    return(
-      await superagent.get('https://final-back-end.herokuapp.com/')
     );
   }
 }
