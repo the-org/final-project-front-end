@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Media from './media.js';
 import Header from './header.js';
+import Login from './login.js';
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends Component {
     return (
       <Fragment>
         <Header />
+        <Login />
         <Media mediaHandler={this.mediaHandler} mediaList={this.state.media} />
       </Fragment>
     );
