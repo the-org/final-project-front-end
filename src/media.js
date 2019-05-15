@@ -19,6 +19,7 @@ class Media extends React.Component{
             return (
               <li key={idx}>
                 <a href={key.url}>{key.title}</a>
+                <button>Save Media</button>
                 <p>{key.descr}</p>
               </li>
             );
