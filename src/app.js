@@ -1,29 +1,28 @@
-import React, {Component} from 'react';
-// import superagent from 'superagent';
+import React, { Component, Fragment } from 'react';
 import Media from './media.js';
 import Header from './header.js';
 
 class App extends Component {
-  constructor (props){
+  constructor(props) {
     super(props);
+
     this.state = {
-      Media:[],
+      media: [],
     }
   }
 
-  mediaHandler = (Media) => {
-    this.setState({Media},() => console.log(this.state.Media));
+  mediaHandler = (media) => {
+    this.setState({ media }, () => console.log(this.state.media));
   }
 
   render() {
     return (
-      <React.Fragment>
-        <Header/>
-        <Media mediaHandler = {this.mediaHandler} mediaList = {this.state.Media}/>
-      </React.Fragment>
+      <Fragment>
+        <Header />
+        <Media mediaHandler={this.mediaHandler} mediaList={this.state.media} />
+      </Fragment>
     );
   }
 }
-
 
 export default App;
