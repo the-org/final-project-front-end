@@ -1,21 +1,21 @@
 import React, { Fragment } from 'react';
 import superagent from 'superagent';
 
-class Media extends React.Component{
+class Media extends React.Component {
 
-  componentDidMount(){
+  componentDidMount() {
     superagent.get('https://final-back-end.herokuapp.com/all-media')
-      .then(res =>{
+      .then(res => {
         this.props.mediaHandler(res.body);
       });
   }
 
-  render(){
-    return(
-      <React.Fragment>
-
+  render() {
+    return (
+      <Fragment>
         <ul>
-          {this.props.mediaList.map( (key,idx) => {
+
+          {this.props.mediaList.map((key, idx) => {
             return (
               <li key={idx}>
                 <a href={key.url}>{key.title}</a>
@@ -23,12 +23,11 @@ class Media extends React.Component{
               </li>
             );
           })}
-          
-        </ul>
-      </React.Fragment>
 
+        </ul>
+      </Fragment>
     );
   }
-
 }
+
 export default Media;
