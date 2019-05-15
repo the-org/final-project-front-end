@@ -1,10 +1,13 @@
 import React, { Fragment } from 'react';
 import superagent from 'superagent';
 
+import api from './helpers/api.js';
+
 class Media extends React.Component {
 
   componentDidMount() {
-    superagent.get('https://final-back-end.herokuapp.com/all-media')
+    let endpoint = api();
+    superagent.get(`${endpoint}/all-media`)
       .then(res => {
         this.props.mediaHandler(res.body);
       });
