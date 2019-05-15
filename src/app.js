@@ -21,7 +21,10 @@ class App extends Component {
       <Fragment>
         <Header />
         <Login />
-        <Media mediaHandler={this.mediaHandler} mediaList={this.state.media} />
+        <Media 
+          mediaHandler={this.mediaHandler} 
+          mediaList={this.state.media} 
+        />
       </Fragment>
     );
   }
