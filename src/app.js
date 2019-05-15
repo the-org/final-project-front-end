@@ -1,21 +1,29 @@
-import React, { Component } from 'react';
-import superagent from 'superagent';
+import React, {Component} from 'react';
+// import superagent from 'superagent';
+import Media from './media.js';
+import Header from './header.js';
 
 class App extends Component {
-  
-  componentDidMount(){
-    superagent.get('https://final-back-end.herokuapp.com')
-      .then(res =>{
-        console.log(res);
-      });
+  constructor (props){
+    super(props);
+    this.state = {
+      Media:[],
+    }
   }
+
+  mediaHandler = (Media) => {
+    this.setState({Media},() => console.log(this.state.Media));
+  }
+
   render() {
     return (
-      <>
-        <p>test</p>
-      </>
+      <React.Fragment>
+        <Header/>
+        <Media mediaHandler = {this.mediaHandler} mediaList = {this.state.Media}/>
+      </React.Fragment>
     );
   }
 }
+
 
 export default App;
