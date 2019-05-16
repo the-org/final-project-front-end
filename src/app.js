@@ -9,6 +9,7 @@ class App extends Component {
 
     this.state = {
       media: [],
+      userId:'',
     }
   }
 
@@ -20,7 +21,7 @@ class App extends Component {
     return (
       <Fragment>
         <Header />
-        <Login />
+        <Login userIdHandler={this.userIdHandler}/>
         <Media mediaHandler={this.mediaHandler} mediaList={this.state.media} />
       </Fragment>
     );

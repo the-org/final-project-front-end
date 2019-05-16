@@ -23,19 +23,20 @@ class Login extends Component{
     e.preventDefault();
 
     // comment out superagent call until the backend route is done
-    // superagent.post(`https://final-back-end.herokuapp.com/create-user/${this.state.inputUserName}`)
-    // .then(function (response){
-    //   console.log(response);
-    // })
+    superagent.post(`https://final-back-end.herokuapp.com/create-user/${this.state.inputUserName}`)
+    .then(function (response){
+      console.log(response);
+    })
 
-    let saveUser = {id: 1, userName: 'testUse'};
+    // let saveUser = {id: 1, userName: 'testUse'};
 
     // save to state
-    this.setState({saveUser}, () => {
-      console.log(this.state.saveUser);
-      localStorage.setItem('user',JSON.stringify(this.state.saveUser));
-    });
+    // this.setState({saveUser}, () => {
+    //   console.log(this.state.saveUser);
+    //   localStorage.setItem('user',JSON.stringify(this.state.saveUser));
+    // });
     // save to localStorage
+
   }
 
   render(){ 
