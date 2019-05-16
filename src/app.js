@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import superagent from 'superagent';
 
 import Media from './media.js';
 import Header from './header.js';
-import Login from './login.js';
 
 import api from './helpers/api';
 
@@ -12,22 +10,9 @@ class App extends Component {
     super(props);
 
     this.state = {
-      media: [],
-      user: {}
+      media: []
     }
     this.api = api();
-  }
-
-  handleUserInput = async e => {
-    let inputUserName = e.target.value;
-    this.setState({ inputUserName });
-  }
-
-  handleUserLogin = async () => {
-    superagent.post(`${this.api}/create-user/${this.state.inputUserName}`)
-      .then(data => {
-        this.setState({ user: data.body });
-      });
   }
 
   mediaHandler = (media) => {
@@ -37,10 +22,12 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Header />
-        <Login 
-          handleUserInput={this.handleUserInput}
-          handleUserLogin={this.handleUserLogin}
+        <Header
+          handleUserInput={this.props.handleUserInput}
+          handleUserLogin={this.props.handleUserLogin}
+          isLoggedIn={this.props.isLoggedIn}
+          user={this.props.user}
+          handleUserLogout={this.props.handleUserLogout}
         />
         <Media 
           mediaHandler={this.mediaHandler} 

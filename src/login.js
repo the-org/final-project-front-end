@@ -6,7 +6,7 @@ const Login = (props) => (
       onChange={props.handleUserInput}
       placeholder="Please enter a username"
     />
-    <button onClick={props.handleUserLogin}>Submit!</button>
+    <button onClick={props.handleUserLogin}>Login</button>
   </Fragment>
 )
 
