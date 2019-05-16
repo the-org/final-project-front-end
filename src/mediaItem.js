@@ -35,7 +35,10 @@ class MediaItem extends Component {
       <li key={this.props.media.id}>
         <a href={this.props.media.url}>{this.props.media.title}</a>
         <p>{this.props.media.descr}</p>
-        <button onClick={() => this.handleSave(this.props.user.id, this.props.media.id)}>{buttonText}</button>
+        {
+          this.props.saveButton &&
+          <button onClick={() => this.handleSave(this.props.user.id, this.props.media.id)}>{buttonText}</button>
+        }
       </li>
     )
   }

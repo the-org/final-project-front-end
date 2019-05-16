@@ -1,26 +1,48 @@
 import React, { Component, Fragment } from "react";
 import superagent from "superagent";
 
+import MediaItem from './mediaItem.js';
+
 import api from "./helpers/api";
 
 class SavedMedia extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      isLoggedIn: false,
+      user: {},
+      savedMedia: []
+    };
+
     this.api = api();
   }
 
   componentDidMount() {
-    superagent.get(`${this.api}/saved/:userId:`).then(response => {
-      this.props.mediaHandler(response.body);
-    });
+    let user = JSON.parse(localStorage.getItem("user"));
+    if (user.id) {
+      this.setState({ isLoggedIn: true, user });
+
+      superagent.get(`${this.api}/saved/${user.id}`)
+        .then(response => {
+          this.setState({ savedMedia: response.body });
+        })
+        .catch(err => console.log('err', err));
+    }
   }
 
   render() {
     return (
       <Fragment>
         <ul>
-          {this.props.mediaList.map(media => {
-            return <MediaItem key={media.id} media={media} user={this.props.user} />;
+          {this.state.savedMedia.map(media => {
+            return (
+              <MediaItem
+                key={media.id}
+                media={media}
+                saveButton={false}
+              />
+            );
           })}
         </ul>
       </Fragment>
@@ -28,4 +50,4 @@ class SavedMedia extends Component {
   }
 }
 
-export default Media;
+export default SavedMedia;

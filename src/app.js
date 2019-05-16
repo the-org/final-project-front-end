@@ -4,6 +4,7 @@ import superagent from 'superagent';
 import Media from './media.js';
 import Header from './header.js';
 import Login from './login.js';
+import SavedMedia from './savedMedia.js';
 
 import api from './helpers/api';
 
@@ -27,6 +28,7 @@ class App extends Component {
     superagent.post(`${this.api}/create-user/${this.state.inputUserName}`)
       .then(data => {
         this.setState({ user: data.body });
+        localStorage.setItem('user', JSON.stringify(data.body));
       });
   }
 
@@ -35,7 +37,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.media);
     return (
       <Fragment>
         <Header />
@@ -48,6 +49,7 @@ class App extends Component {
           mediaList={this.state.media}
           user={this.state.user}
         />
+        <SavedMedia />
       </Fragment>
     );
   }
