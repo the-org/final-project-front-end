@@ -1,28 +1,31 @@
-import React, { Fragment } from 'react';
-import superagent from 'superagent';
-//saved media is from our db, not the api- Delete below?
-import api from './helpers/api.js';
+import React, { Component, Fragment } from "react";
+import superagent from "superagent";
 
-class Media extends React.Component {
-//see comment on 3 - savedMedia is a result from the db not the API
+import api from "./helpers/api";
+
+class SavedMedia extends Component {
+  constructor(props) {
+    super(props);
+    this.api = api();
+  }
+
   componentDidMount() {
-    let endpoint = api();
-    superagent.get(`${endpoint}/all-media`)
-      .then(res => {
-        this.props.mediaHandler(res.body);
-      });
+    superagent.get(`${this.api}/saved/:userId:`).then(response => {
+      this.props.mediaHandler(response.body);
+    });
   }
 
   render() {
     return (
-        //this should return saved media object/table
       <Fragment>
         <ul>
-          
+          {this.props.mediaList.map(media => {
+            return <MediaItem key={media.id} media={media} user={this.props.user} />;
+          })}
         </ul>
       </Fragment>
     );
   }
 }
 
-export default SavedMedia;
+export default Media;
