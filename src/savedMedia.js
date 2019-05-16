@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import superagent from "superagent";
 
 import MediaItem from './mediaItem.js';
+import Header from './header.js';
 
 import api from "./helpers/api";
 
@@ -34,6 +35,13 @@ class SavedMedia extends Component {
   render() {
     return (
       <Fragment>
+        <Header 
+          handleUserInput={this.props.handleUserInput}
+          handleUserLogin={this.props.handleUserLogin}
+          isLoggedIn={this.props.isLoggedIn}
+          user={this.props.user}
+          handleUserLogout={this.props.handleUserLogout}
+        />
         <ul>
           {this.state.savedMedia.map(media => {
             return (
