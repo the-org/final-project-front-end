@@ -5,6 +5,8 @@ import Media from './media.js';
 import Header from './header.js';
 import Login from './login.js';
 
+import api from './helpers/api';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -13,29 +15,23 @@ class App extends Component {
       media: [],
       user: {}
     }
+    this.api = api();
   }
 
-  handleUserLogin = async e => {
-    e.preventDefault();
+  handleUserInput = async e => {
+    let inputUserName = e.target.value;
+    this.setState({ inputUserName });
+  }
 
-    superagent.post(`${process.env.REACT_APP_DEV_API}/create-user/${this.state.inputUserName}`)
-    .then(function (response){
-      console.log(response);
-    })
-
-    // let saveUser = {id: 1, userName: 'testUse'};
-
-    // save to state
-    // this.setState({saveUser}, () => {
-    //   console.log(this.state.saveUser);
-    //   localStorage.setItem('user',JSON.stringify(this.state.saveUser));
-    // });
-    // save to localStorage
-
+  handleUserLogin = async () => {
+    superagent.post(`${this.api}/create-user/${this.state.inputUserName}`)
+      .then(data => {
+        this.setState({ user: data.body });
+      });
   }
 
   mediaHandler = (media) => {
-    this.setState({ media }, () => console.log(this.state.media));
+    this.setState({ media });
   }
 
   render() {
@@ -43,11 +39,13 @@ class App extends Component {
       <Fragment>
         <Header />
         <Login 
+          handleUserInput={this.handleUserInput}
           handleUserLogin={this.handleUserLogin}
         />
         <Media 
           mediaHandler={this.mediaHandler} 
-          mediaList={this.state.media} 
+          mediaList={this.state.media}
+          user={this.state.user}
         />
       </Fragment>
     );
