@@ -4,6 +4,7 @@ import superagent from 'superagent';
 
 import App from './app.js';
 import SavedMedia from './savedMedia.js';
+import AboutUs from './aboutUs.js';
 
 import api from './helpers/api';
 
@@ -42,7 +43,7 @@ class Main extends Component {
             exact path="/"
             render={props => <App {...props} handleUserInput={this.handleUserInput} handleUserLogin={this.handleUserLogin} isLoggedIn={this.state.isLoggedIn} user={this.state.user} handleUserLogout={this.handleUserLogout} />}
           />
-          {/* <Route path="/about" component={AboutUs} /> */}
+          <Route path="/about" component={AboutUs} />
           <Route
             path="/saved"
             render={props => <SavedMedia {...props} handleUserInput={this.handleUserInput} handleUserLogin={this.handleUserLogin} isLoggedIn={this.state.isLoggedIn} user={this.state.user} handleUserLogout={this.handleUserLogout} />}
