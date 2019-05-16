@@ -16,7 +16,6 @@ class MediaItem extends Component {
 
   handleSave = (userId, mediaId) => {
     if (this.props.user.id) {
-      console.log(`${this.api}/save/${userId}/${mediaId}`);
       superagent.post(`${this.api}/save/${userId}/${mediaId}`)
         .then(response => {
           if (response.text === 'Media saved.') {
