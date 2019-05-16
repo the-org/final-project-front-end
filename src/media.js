@@ -3,7 +3,7 @@ import superagent from 'superagent';
 
 class Media extends React.Component {
   componentDidMount() {
-    superagent.get('https://final-back-end.herokuapp.com/all-media')
+    superagent.get(`${process.env.REACT_APP_DEV_API}/all-media`)
       .then(res => {
         this.props.mediaHandler(res.body);
       });
@@ -11,10 +11,10 @@ class Media extends React.Component {
 
   handleSave(mediaId){
     //get userId from localstorage
-    let userId = JSON.parse(localStorage.getItem('user')).id;
-    console.log(userId);
+    // let userId = JSON.parse(localStorage.getItem('user')).id;
+    // console.log(userId);
     //send userId and article Id to backend
-    superagent.post(`https://final-back-end.herokuapp.com/save/${userId}/${mediaId}`);
+    // superagent.post(`${process.env.REACT_APP_DEV_API}/save/${userId}/${mediaId}`);
   }
 
   render() {

@@ -1,4 +1,4 @@
-import React, {Component, Fragment}from 'react';
+import React, { Component, Fragment } from 'react';
 import superagent from 'superagent';
 
 class Login extends Component{
@@ -7,9 +7,9 @@ class Login extends Component{
 
     this.state = {
       inputUserName: '',
-      saveUser : {
-        id : '',
-        userName : '',
+      saveUser: {
+        id: '',
+        userName: '',
       },
     }
   }
@@ -23,7 +23,7 @@ class Login extends Component{
     e.preventDefault();
 
     // comment out superagent call until the backend route is done
-    superagent.post(`https://final-back-end.herokuapp.com/create-user/${this.state.inputUserName}`)
+    superagent.post(`${process.env.REACT_APP_DEV_API}/create-user/${this.state.inputUserName}`)
     .then(function (response){
       console.log(response);
     })
