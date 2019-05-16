@@ -1,32 +1,30 @@
-import React, { Fragment } from 'react';
-import superagent from 'superagent';
+import React, { Component, Fragment } from "react";
+import superagent from "superagent";
 
-import api from './helpers/api.js';
+import MediaItem from "./mediaItem.js";
 
-class Media extends React.Component {
+import api from "./helpers/api";
+
+class Media extends Component {
+  constructor(props) {
+    super(props);
+
+    this.api = api();
+  }
 
   componentDidMount() {
-    let endpoint = api();
-    superagent.get(`${endpoint}/all-media`)
-      .then(res => {
-        this.props.mediaHandler(res.body);
-      });
+    superagent.get(`${this.api}/all-media`).then(response => {
+      this.props.mediaHandler(response.body);
+    });
   }
 
   render() {
     return (
       <Fragment>
         <ul>
-
-          {this.props.mediaList.map((key, idx) => {
-            return (
-              <li key={idx}>
-                <a href={key.url}>{key.title}</a>
-                <p>{key.descr}</p>
-              </li>
-            );
+          {this.props.mediaList.map(media => {
+            return <MediaItem key={media.id} media={media} user={this.props.user} />;
           })}
-
         </ul>
       </Fragment>
     );
