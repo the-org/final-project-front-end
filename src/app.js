@@ -17,6 +17,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.media);
     return (
       <Fragment>
         <Header />
@@ -24,6 +25,7 @@ class App extends Component {
         <Media 
           mediaHandler={this.mediaHandler} 
           mediaList={this.state.media} 
+    
         />
       </Fragment>
     );
