@@ -32,7 +32,7 @@ class App extends Component {
         <Media 
           mediaHandler={this.mediaHandler} 
           mediaList={this.state.media}
-          user={this.state.user}
+          user={this.props.user}
         />
       </Fragment>
     );
