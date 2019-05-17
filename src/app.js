@@ -29,11 +29,13 @@ class App extends Component {
           user={this.props.user}
           handleUserLogout={this.props.handleUserLogout}
         />
-        <Media 
-          mediaHandler={this.mediaHandler} 
-          mediaList={this.state.media}
-          user={this.props.user}
-        />
+        <main>
+          <Media
+            mediaHandler={this.mediaHandler}
+            mediaList={this.state.media}
+            user={this.state.user}
+          />
+        </main>
       </Fragment>
     );
   }

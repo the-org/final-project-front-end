@@ -33,7 +33,7 @@ class MediaItem extends Component {
 
     return (
       <li key={this.props.media.id}>
-        <a href={this.props.media.url}>{this.props.media.title}</a>
+        <a target="_blank" rel="noopener noreferrer" href={this.props.media.url}>{this.props.media.title}</a>
         <p>{this.props.media.descr}</p>
         {
           this.props.saveButton &&
