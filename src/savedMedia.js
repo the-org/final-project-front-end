@@ -35,24 +35,26 @@ class SavedMedia extends Component {
   render() {
     return (
       <Fragment>
-        <Header 
+        <Header
           handleUserInput={this.props.handleUserInput}
           handleUserLogin={this.props.handleUserLogin}
           isLoggedIn={this.props.isLoggedIn}
           user={this.props.user}
           handleUserLogout={this.props.handleUserLogout}
         />
-        <ul>
-          {this.state.savedMedia.map(media => {
-            return (
-              <MediaItem
-                key={media.id}
-                media={media}
-                saveButton={false}
-              />
-            );
-          })}
-        </ul>
+        <main>
+          <ul>
+            {this.state.savedMedia.map(media => {
+              return (
+                <MediaItem
+                  key={media.id}
+                  media={media}
+                  saveButton={false}
+                />
+              );
+            })}
+          </ul>
+        </main>
       </Fragment>
     );
   }

@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+main {
+  button {
+    background: none;
+    border: 2px solid $blueOne;
+    border-radius: 2px;
+    padding: 4px 18px;
+    color: $blueOne;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      background: $blueOne;
+      color: $white;
+    }
+  }
+}
