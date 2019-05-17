@@ -20,11 +20,8 @@ class SavedMedia extends Component {
   }
 
   componentDidMount() {
-    let user = JSON.parse(localStorage.getItem("user"));
-    if (user.id) {
-      this.setState({ isLoggedIn: true, user });
-
-      superagent.get(`${this.api}/saved/${user.id}`)
+    if (this.props.isLoggedIn) {
+      superagent.get(`${this.api}/saved/${this.props.user.id}`)
         .then(response => {
           this.setState({ savedMedia: response.body });
         })
