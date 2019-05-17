@@ -39,19 +39,17 @@ class SavedMedia extends Component {
           user={this.props.user}
           handleUserLogout={this.props.handleUserLogout}
         />
-        <main>
-          <ul>
-            {this.state.savedMedia.map(media => {
-              return (
-                <MediaItem
-                  key={media.id}
-                  media={media}
-                  saveButton={false}
-                />
-              );
-            })}
-          </ul>
-        </main>
+        <ul>
+          {this.state.savedMedia.map(media => {
+            return (
+              <MediaItem
+                key={media.id}
+                media={media}
+                saveButton={false}
+              />
+            );
+          })}
+        </ul>
       </Fragment>
     );
   }
