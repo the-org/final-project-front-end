@@ -21,18 +21,20 @@ class Media extends Component {
   render() {
     return (
       <Fragment>
-        <ul>
-          {this.props.mediaList.map(media => {
-            return (
-              <MediaItem 
-                key={media.id} 
-                media={media} 
-                user={this.props.user}
-                saveButton={true}
-              />
-            );
-          })}
-        </ul>
+        <main>
+          <ul>
+            {this.props.mediaList.map(media => {
+              return (
+                <MediaItem
+                  key={media.id}
+                  media={media}
+                  user={this.props.user}
+                  saveButton={true}
+                />
+              );
+            })}
+          </ul>
+        </main>
       </Fragment>
     );
   }
